@@ -1,0 +1,58 @@
+[
+  {
+    "problem_number": 1,
+    "topic": "Strategic Reasoning",
+    "question": "An ordinary tic-tac-toe board has 9 squares: (1,1)-(3,3). Now consider fric-frac-froe, which is played on an extended board where the top row has four squares (1,1)-(1,4), and the other two rows have three squares as before. The objective of fric-frac-froe is to have three markers in a row, just as in ordinary tic-tac-toe. Either find a winning strategy for the fric-frac-froe player who goes first, or explain why the game is a draw.",
+    "correct_answer": "The first player has a winning strategy starting with move (1,3). If the second player blocks at (1,2), the correct follow-up is (2,2). If the second player blocks at (3,1), then (3,3) wins because both (1,1) and (2,3) are threatened.",
+    "model_struggle_notes": "Most models failed. Some (o1, o3-mini, gemini, deepseek-r1) correctly guessed the first player wins but provided incorrect or incomplete strategies (e.g., self-defeating moves). Others assumed the game was a draw, likely due to training data bias regarding tic-tac-toe."
+  },
+  {
+    "problem_number": 2,
+    "topic": "Set Theory / Constraints",
+    "question": "We have two disjoint sets of numbers: A, with n members, and B with n+1 members. We want to construct a sequence of numbers which is 2n+1 numbers long, and every second number is selected from A and every second number from B, and the sequence has to start and end with a number from A. Either suggest a method for doing this, or explain why such a method cannot exist.",
+    "correct_answer": "A possible method is: 'Always select the smallest member from A and the smallest member from B'. (e.g., if A={1}, B={2,3}, sequence is 1, 2, 1).",
+    "model_struggle_notes": "All models except o1 and o3-mini failed. They incorrectly assumed that each element could only be used once (sampling without replacement), likely due to 'unwarranted assumptions' from similar problems in their training data."
+  },
+  {
+    "problem_number": 3,
+    "topic": "Numerical Reasoning / Primes",
+    "question": "We write the prime numbers in six columns... In the first row: 2,3,5,7,11,13. In the second row (reverse order): 37,31,29,23,19,17. We keep alternating... After a new row has been added, we compute the sum of each column. After how many rows will we see (for the first time) that the third column has the largest sum of all columns? Either answer with a number, or explain why this will never happen.",
+    "correct_answer": "This will first happen on line 83.",
+    "model_struggle_notes": "This problem proved 'too difficult for all models'. Every model claimed it would never happen based on 'preliminary numerical evidence' from the first few rows, failing to generalize or write code to check further."
+  },
+  {
+    "problem_number": 4,
+    "topic": "Spatial Reasoning / Optimization",
+    "question": "We define v(n) to be the minimal number of dots visible on n dice placed on a table. You are given v(1)=15, v(2)=20, v(3)=26. What is v(37)?",
+    "correct_answer": "95. (Strategy: Arrange 36 dice in a 6x6 square with '1's up. Place the 37th die with '1' up and its '5' face pressed against a '3' on the square's edge. 88 visible dots + 7 new visible dots = 95).",
+    "model_struggle_notes": "Deepseek-r1 solved this. o1 and Gemini suggested suboptimal linear arrangements. Other models tried to fit incorrect numerical formulas (e.g., quadratic) to the examples v(1), v(2), v(3) without understanding the physical geometry."
+  },
+  {
+    "problem_number": 5,
+    "topic": "Deductive Reasoning",
+    "question": "I have a collection of 5 triangles, T1 to T5. All the interior angles... are distinct and found in the set A={1,2,3...171}. You can now point to a number in A and ask an oracle which triangle this angle belongs to. What is the minimal number of such questions you have to ask before you are guaranteed to know which triangle each of the 15 numbers in A belongs to?",
+    "correct_answer": "6 questions are sufficient and necessary.",
+    "model_struggle_notes": "No model completely solved this. o3-mini suggested 10 questions; deepseek-r1 suggested 8 (correct but not optimal). o1 correctly identified the search space size and lower bound (5) but incorrectly claimed 5 was sufficient without a valid strategy."
+  },
+  {
+    "problem_number": 6,
+    "topic": "Combinatorics / Constraints",
+    "question": "We want to assign a number in {1...12} to each of the edges on a cube so that (1) each edge is assigned a different number, and (2) the sum of the four edges on one face of the cube will be the same for all faces. Determine whether this is possible or not. If it is possible, determine which number the edges on one face should add up to.",
+    "correct_answer": "It is possible. The edges on one face should add up to 26.",
+    "model_struggle_notes": "Most models correctly calculated the sum (26) but failed to construct the concrete assignment of numbers to edges. Only o3-mini solved it completely. Several models claimed it was possible simply because the total sum was divisible by 6, failing to verify if the geometric arrangement was actually possible."
+  },
+  {
+    "problem_number": 7,
+    "topic": "Spatial Strategy",
+    "question": "A square-shaped swimming pool has its opposite corners at (0,0) and (2,2). A swimmer and a runner make a bet... start at (0,0). Swimmer goal: reach (1,2) or (2,1). Runner is twice as fast. Assuming best strategies, who wins?",
+    "correct_answer": "The swimmer will win. Best strategy: Swim to the center (1,1). If the runner commits to one side (e.g., y-axis), the swimmer turns to the other target (e.g., 2,1).",
+    "model_struggle_notes": "Only o1 solved this by realizing the swimmer can change direction. Other models (like o1-preview) suggested the runner wins, or even impossible strategies like the runner entering the pool."
+  },
+  {
+    "problem_number": 8,
+    "topic": "Number Theory / Properties",
+    "question": "We call a set 'progressive' if at least three numbers belong to an arithmetic progression with difference > 1... Either construct a set of positive integers which is not progressive and has at least 5 members, or explain why no such set exists.",
+    "correct_answer": "No such set exists. (Any non-progressive set can contain at most 2 odd and 2 even numbers, totaling 4 max).",
+    "model_struggle_notes": "Only o1 and o3-mini realized it was impossible. All other models claimed it was possible and hallucinated examples (e.g., {1, 2, 4, 8, 16}) that were actually progressive, ignoring the definitions provided."
+  }
+]
